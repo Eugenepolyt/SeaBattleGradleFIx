@@ -41,6 +41,7 @@ class MainView : View("BattleShip") {
                             menubar {
                                 menu("Game") {
                                     item("Restart").action {
+                                        restartGame("Player")
                                     }
                                     separator()
                                     item("Bot fight").action {
