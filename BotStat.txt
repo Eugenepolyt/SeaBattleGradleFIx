@@ -1,11 +1,6 @@
 
-Statistic of bot fight with random positions:
+Fight:
 
-Version 1: 413; Version 2: 588
-Version 1: 414; Version 3: 586
-Version 2: 497; Version 3: 503
-
-Statistic of bot fight with optimal positions:
-
-Version 1: 190; Version 3: 810
-Version 2: 208; Version 3: 792            
+Version 1: 2118; Version 2: 2883
+Version 1: 940; Version 3: 4060
+Version 2: 1011; Version 3: 3989      

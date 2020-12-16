@@ -89,30 +89,18 @@ class MotionController(gameBoardList: List<Ocean>, private val mW: MainView) {
             }
         } else { // fight between 2 bots
             val resultList = mutableListOf<Pair<Int,Int>>()
-            for (i in 0..5000) {
+            for (i in 0..15000) {
                 botFightStatus = true
                 var bot: Bot
                 var bot2: Bot
                 when {
-                    i < 1000 -> {
+                    i < 5000 -> {
                         bot = Bot(gameBoardSBot,  ".Bot1")
                         bot.setVersion(1)
                         bot2 = Bot(gameBoardBot,  ".Bot2")
                         bot2.setVersion(2)
                     }
-                    i in 1001..2000 -> {
-                        bot = Bot(gameBoardSBot,  ".Bot1")
-                        bot.setVersion(1)
-                        bot2 = Bot(gameBoardBot,  ".Bot2")
-                        bot2.setVersion(3)
-                    }
-                    i in 2001..3000 -> {
-                        bot = Bot(gameBoardSBot,  ".Bot1")
-                        bot.setVersion(2)
-                        bot2 = Bot(gameBoardBot,  ".Bot2")
-                        bot2.setVersion(3)
-                    }
-                    i in 3001..4000 -> {
+                    i in 5001..10000 -> {
                         bot = Bot(gameBoardTBot,  ".Bot1")
                         bot.setVersion(1)
                         bot2 = Bot(gameBoardBot,  ".Bot2")
@@ -135,7 +123,7 @@ class MotionController(gameBoardList: List<Ocean>, private val mW: MainView) {
                     }
                 }
                 when (i) {
-                    1000, 2000, 3000, 4000, 5000 -> {
+                    5000, 10000, 15000 -> {
                         resultList.add(firstBotStat to secondBotStat)
                         firstBotStat = 0
                         secondBotStat = 0
@@ -146,16 +134,12 @@ class MotionController(gameBoardList: List<Ocean>, private val mW: MainView) {
             mW.restartGame("Player")
 
             val result = """
-                Statistic of bot fight with random positions:
+                Fight:
                 
                 Version 1: ${resultList[0].first}; Version 2: ${resultList[0].second}
                 Version 1: ${resultList[1].first}; Version 3: ${resultList[1].second}
-                Version 2: ${resultList[2].first}; Version 3: ${resultList[2].second}
-                
-                Statistic of bot fight with optimal positions:
-                
-                Version 1: ${resultList[3].first}; Version 3: ${resultList[3].second}
-                Version 2: ${resultList[4].first}; Version 3: ${resultList[4].second}            
+                Version 2: ${resultList[2].first}; Version 3: ${resultList[2].second}      
+           
             """.trimIndent()
 
             File("BotStat.txt").bufferedWriter().use {

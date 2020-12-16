@@ -80,7 +80,7 @@ class MainView : View("BattleShip") {
                                     item("Hard").action {
                                         if (!controller.statusGame) {
                                             botVersion = 3
-                                            spawnPos = 4
+                                            spawnPos = 2
                                         }
                                     }
                                 }
@@ -206,8 +206,6 @@ class MainView : View("BattleShip") {
             }
         }
 
-
-        gameBoard.spawnAll(1)
     }
     fun restartGame (name: String) {
         if (name[0] == '.') {

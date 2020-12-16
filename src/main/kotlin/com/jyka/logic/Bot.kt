@@ -46,7 +46,6 @@ class Bot(private var gameBoard: Ocean, val name: String) {
 
 
     fun shot (): Boolean {
-        println(verison)
         currentShotList = if(verison == 1) killMap[1]!!
         else killMap[killCheck]!!
 
