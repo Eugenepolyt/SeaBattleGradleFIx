@@ -3,7 +3,7 @@ package com.jyka.logic
 import com.jyka.view.WinnerDialog
 import javafx.scene.paint.Color
 
-class Bot(private var gameBoard: Ocean, private val verison: Int, val name: String) {
+class Bot(private var gameBoard: Ocean, val name: String) {
     /*
     Several versions of the sea battle bot, knowing the tactics of the game, the game
     is reduced to 5x5 cells and random search for single-deck enemy ships.
@@ -16,6 +16,7 @@ class Bot(private var gameBoard: Ocean, private val verison: Int, val name: Stri
     optimal shooting at ships...
      */
     var currentShotList = listOf<Pair<Int,Int>>()
+    var verison = 1
     private var attackRow = 0
     private var attackColumn = 0
     private var attacking = false // Was a ship attacked
@@ -30,20 +31,22 @@ class Bot(private var gameBoard: Ocean, private val verison: Int, val name: Stri
         1 to 0
     ) // Map to check if the ship is dead
 
-    init {
 
-        // Filling in the map of shots
-        if (verison == 1) killCheck = 1
+    fun setVersion(vers: Int) {
+        verison = vers
         killMap[4] = mutableListOf()
         killMap[3] = mutableListOf()
         killMap[2] = mutableListOf()
         killMap[1] = mutableListOf()
         fillingShotList(verison)
-
+        if (verison == 2 || verison == 3) {
+            killCheck = 4
+        } else killCheck = 1
     }
 
 
     fun shot (): Boolean {
+        println(verison)
         currentShotList = if(verison == 1) killMap[1]!!
         else killMap[killCheck]!!
 
@@ -242,4 +245,6 @@ class Bot(private var gameBoard: Ocean, private val verison: Int, val name: Stri
         }
 
     }
+
+
 }

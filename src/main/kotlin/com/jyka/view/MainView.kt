@@ -26,7 +26,7 @@ class MainView : View("BattleShip") {
     private val gameBoardSecondBot = Ocean(stackSecondBot, this)
     private val gameBoardThirdBot = Ocean(stackThirdBot, this)
     private val gameBoardList = listOf(gameBoard,gameBoardBot,gameBoardSecondBot,gameBoardThirdBot)
-    private var controller = MotionController(gameBoardList,botVersion, this)
+    private var controller = MotionController(gameBoardList, this)
     private var button = Button()
 
     init {
@@ -80,7 +80,7 @@ class MainView : View("BattleShip") {
                                     item("Hard").action {
                                         if (!controller.statusGame) {
                                             botVersion = 3
-                                            spawnPos = 2
+                                            spawnPos = 4
                                         }
                                     }
                                 }
@@ -92,6 +92,9 @@ class MainView : View("BattleShip") {
                             action {
                                 if (!controller.statusGame) {
                                     text = "Restart game"
+                                    println(botVersion)
+                                    controller.bot.setVersion(botVersion)
+                                    println(controller.bot.verison)
                                     gameBoardBot.spawnAll(spawnPos)
                                     controller.statusGame = true
                                 } else {
@@ -231,7 +234,7 @@ class MainView : View("BattleShip") {
             controller.statusGame = false
             controller.whoFight = 1
             gameBoard.spawnAll(1)
-            controller = MotionController(gameBoardList, botVersion,this)
+            controller = MotionController(gameBoardList, this)
         }
     }
 }

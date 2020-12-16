@@ -5,7 +5,7 @@ import com.jyka.view.MainView
 import javafx.scene.paint.Color
 import java.io.File
 
-class MotionController(gameBoardList: List<Ocean>, botVersion: Int, private val mW: MainView) {
+class MotionController(gameBoardList: List<Ocean>, private val mW: MainView) {
 
     var firstBotStat = 0
     var secondBotStat = 0
@@ -14,7 +14,7 @@ class MotionController(gameBoardList: List<Ocean>, botVersion: Int, private val 
     private var gameBoardBot = gameBoardList[1]
     private var gameBoardSBot = gameBoardList[2]
     private var gameBoardTBot = gameBoardList[3]
-    private val bot = Bot(gameBoard, botVersion, "Bot")
+    val bot = Bot(gameBoard,  "Bot")
     var statusGame = false
     private var turn = true
     var botFightStatus = true
@@ -95,24 +95,34 @@ class MotionController(gameBoardList: List<Ocean>, botVersion: Int, private val 
                 var bot2: Bot
                 when {
                     i < 1000 -> {
-                        bot = Bot(gameBoardSBot, 1, ".Bot1")
-                        bot2 = Bot(gameBoardBot, 2, ".Bot2")
+                        bot = Bot(gameBoardSBot,  ".Bot1")
+                        bot.setVersion(1)
+                        bot2 = Bot(gameBoardBot,  ".Bot2")
+                        bot2.setVersion(2)
                     }
                     i in 1001..2000 -> {
-                        bot = Bot(gameBoardSBot, 1, ".Bot1")
-                        bot2 = Bot(gameBoardBot, 3, ".Bot2")
+                        bot = Bot(gameBoardSBot,  ".Bot1")
+                        bot.setVersion(1)
+                        bot2 = Bot(gameBoardBot,  ".Bot2")
+                        bot2.setVersion(3)
                     }
                     i in 2001..3000 -> {
-                        bot = Bot(gameBoardSBot, 2, ".Bot1")
-                        bot2 = Bot(gameBoardBot, 3, ".Bot2")
+                        bot = Bot(gameBoardSBot,  ".Bot1")
+                        bot.setVersion(2)
+                        bot2 = Bot(gameBoardBot,  ".Bot2")
+                        bot2.setVersion(3)
                     }
                     i in 3001..4000 -> {
-                        bot = Bot(gameBoardTBot, 1, ".Bot1")
-                        bot2 = Bot(gameBoardBot, 3, ".Bot2")
+                        bot = Bot(gameBoardTBot,  ".Bot1")
+                        bot.setVersion(1)
+                        bot2 = Bot(gameBoardBot,  ".Bot2")
+                        bot2.setVersion(3)
                     }
                     else -> {
-                        bot = Bot(gameBoardTBot, 2, ".Bot1")
-                        bot2 = Bot(gameBoardBot, 3, ".Bot2")
+                        bot = Bot(gameBoardTBot,  ".Bot1")
+                        bot.setVersion(2)
+                        bot2 = Bot(gameBoardBot,  ".Bot2")
+                        bot2.setVersion(3)
                     }
                 }
                 while (botFightStatus) {
