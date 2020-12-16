@@ -6,7 +6,7 @@ import javafx.scene.control.Dialog
 
 class WinnerDialog(winner: String, private val mW: MainView) : Dialog<ButtonType>() {
     init {
-        title = "Congratulation!!!"
+        title = "Result"
         with(dialogPane) {
             headerText = if (winner == "Bot") "$winner is win. Don't worry, i believe u will win next time"
             else "$winner is win. Congratulation!!!!!!"
