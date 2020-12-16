@@ -6,7 +6,7 @@ import javafx.scene.control.Dialog
 
 class BotStatistic(text: String) : Dialog<ButtonType>() {
     init {
-        title = "Congratulation!!!"
+        title = "Bot Statistic"
         with(dialogPane) {
             headerText = text
             buttonTypes.add(ButtonType("Go next?", ButtonBar.ButtonData.OK_DONE))
